@@ -8,6 +8,11 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  data:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
   ai:
     dashscope:
       api-key: your-api-key
@@ -18,6 +23,7 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: gemma3:1b
+
 server:
   port: 8124
   servlet:
