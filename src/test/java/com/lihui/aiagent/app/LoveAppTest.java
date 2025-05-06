@@ -65,7 +65,7 @@ class LoveAppTest {
     @Test
     void doChatWithRagToAiCupid() {
         String chatId = UUID.randomUUID().toString();
-        String message = "我是男生，22岁，喜欢看电影，听音乐，想找个女朋友";
+        String message = "我是男生，22岁，喜欢睡觉";
         String answer =  loveApp.doChatWithRagToAiCupid(message, chatId);
         Assertions.assertNotNull(answer);
     }
