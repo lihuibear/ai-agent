@@ -15,7 +15,10 @@ public class LoveAppVectorStoreConfig {
 
     @Resource
     private LoveAppDocumentLoader loveAppDocumentLoader;
-    
+    @Resource
+    private LoveAppDocumentToAiCupidLoader loveAppDocumentToAiCupidLoader;
+
+
     @Bean
     VectorStore loveAppVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
         SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(dashscopeEmbeddingModel)
@@ -25,4 +28,14 @@ public class LoveAppVectorStoreConfig {
         simpleVectorStore.add(documents);
         return simpleVectorStore;
     }
+    @Bean
+    VectorStore loveAppToAiCupidVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
+        SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(dashscopeEmbeddingModel)
+                .build();
+        // 加载文档
+        List<Document> documents = loveAppDocumentToAiCupidLoader.loadMarkdowns();
+        simpleVectorStore.add(documents);
+        return simpleVectorStore;
+    }
+
 }
