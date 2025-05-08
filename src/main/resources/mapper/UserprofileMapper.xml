@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lihui.aiagent.mapper.UserprofileMapper">
+
+    <resultMap id="BaseResultMap" type="com.lihui.aiagent.domain.Userprofile">
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="age" column="age" jdbcType="INTEGER"/>
+        <result property="gender" column="gender" jdbcType="VARCHAR"/>
+        <result property="constellation" column="constellation" jdbcType="VARCHAR"/>
+        <result property="occupation" column="occupation" jdbcType="VARCHAR"/>
+        <result property="hobbies" column="hobbies" jdbcType="VARCHAR"/>
+        <result property="partnerexpectation" column="partnerExpectation" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        name,age,gender,
+        constellation,occupation,hobbies,
+        partnerExpectation
+    </sql>
+</mapper>

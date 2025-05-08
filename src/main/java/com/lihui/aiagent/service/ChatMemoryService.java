@@ -3,6 +3,7 @@ package com.lihui.aiagent.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import com.lihui.aiagent.domain.ChatMemory;
+import com.lihui.aiagent.domain.Userprofile;
 import org.springframework.ai.chat.messages.Message;
 
 import java.util.List;
@@ -36,4 +37,12 @@ public interface ChatMemoryService extends IService<ChatMemory> {
      */
     void clearMessages(String conversationId);
 
+    /**
+    * @author lihui
+    * @description 针对表【userprofile】的数据库操作Service
+    * @createDate 2025-05-08 18:19:59
+    */
+    interface UserprofileService extends IService<Userprofile> {
+
+    }
 }

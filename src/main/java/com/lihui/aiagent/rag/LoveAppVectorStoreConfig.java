@@ -38,4 +38,5 @@ public class LoveAppVectorStoreConfig {
         return simpleVectorStore;
     }
 
+
 }

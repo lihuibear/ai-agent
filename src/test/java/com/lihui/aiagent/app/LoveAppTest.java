@@ -69,4 +69,12 @@ class LoveAppTest {
         String answer =  loveApp.doChatWithRagToAiCupid(message, chatId);
         Assertions.assertNotNull(answer);
     }
+
+    @Test
+    void doChatWithRagToAiCupidMybatis() {
+        String chatId = UUID.randomUUID().toString();
+        String message = "我是男生，22岁，喜欢睡觉";
+        String answer =  loveApp.doChatWithRagToAiCupidMybatis(message, chatId);
+        Assertions.assertNotNull(answer);
+    }
 }
