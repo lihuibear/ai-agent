@@ -62,6 +62,8 @@ class LoveAppTest {
         Assertions.assertNotNull(answer);
     }
 
+
+
 //    @Test
 //    void doChatWithRagToAiCupid() {
 //        String chatId = UUID.randomUUID().toString();
@@ -77,4 +79,13 @@ class LoveAppTest {
 //        String answer =  loveApp.doChatWithRagToAiCupidMybatis(message, chatId);
 //        Assertions.assertNotNull(answer);
 //    }
+
+    @Test
+    void doChatWithRagPgVector() {
+        String chatId = UUID.randomUUID().toString();
+        String message = "你好，我是程序员lihui，我想让另一半（jjm）更爱我，但我不知道该怎么做";
+        String answer =  loveApp.doChatWithRagPgVector(message, chatId);
+        Assertions.assertNotNull(answer);
+
+    }
 }

@@ -167,7 +167,7 @@ public class LoveApp {
 //    }
 
 
-//    // AI媒婆（本地知识库实现 + 数据库）
+    //    // AI媒婆（本地知识库实现 + 数据库）
 //    @Resource
 //    private VectorStore loveAppToAiCupidVectorStoreMybatis;
 //
@@ -188,5 +188,26 @@ public class LoveApp {
 //        log.info("content: {}", content);
 //        return content;
 //    }
+    @Resource
+    private VectorStore pgVectorVectorStore;
 
+    public String doChatWithRagPgVector(String message, String chatId) {
+        ChatResponse chatResponse = chatClient
+                .prompt()
+                .user(message)
+                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
+                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
+                // 开启日志，便于观察效果
+                .advisors(new MyLoggerAdvisor())
+                // 应用知识库问答
+//                .advisors(new QuestionAnswerAdvisor(loveAppVectorStore))
+
+                // 应用RAG 检索增强服务 （基于PgVector向量存储）
+                .advisors(new QuestionAnswerAdvisor(pgVectorVectorStore))
+                .call()
+                .chatResponse();
+        String content = chatResponse.getResult().getOutput().getText();
+        log.info("content: {}", content);
+        return content;
+    }
 }
