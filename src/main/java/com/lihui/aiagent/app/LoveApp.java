@@ -143,50 +143,50 @@ public class LoveApp {
         log.info("content: {}", content);
         return content;
     }
+//
+//    // AI媒婆（本地知识库实现）
+//    @Resource
+//    private VectorStore loveAppToAiCupidVectorStore;
+//
+//    public String doChatWithRagToAiCupid(String message, String chatId) {
+//        ChatResponse chatResponse = chatClient
+//                .prompt()
+//                .user(message)
+//                .system(SYSTEM_PROMPT + "对话完成后，请以列表形式提供与用户性别相异且匹配的资料，列表中的每个条目应包含姓名、年龄、爱好等基本信息。如果没有匹配的资料，请明确说明 '未找到匹配资料'。")
+//                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
+//                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
+//                // 开启日志，便于观察效果
+//                .advisors(new MyLoggerAdvisor())
+//                // 应用知识库问答
+//                .advisors(new QuestionAnswerAdvisor(loveAppToAiCupidVectorStore))
+//                .call()
+//                .chatResponse();
+//        String content = chatResponse.getResult().getOutput().getText();
+//        log.info("content: {}", content);
+//        return content;
+//    }
 
-    // AI媒婆（本地知识库实现）
-    @Resource
-    private VectorStore loveAppToAiCupidVectorStore;
 
-    public String doChatWithRagToAiCupid(String message, String chatId) {
-        ChatResponse chatResponse = chatClient
-                .prompt()
-                .user(message)
-                .system(SYSTEM_PROMPT + "对话完成后，请以列表形式提供与用户性别相异且匹配的资料，列表中的每个条目应包含姓名、年龄、爱好等基本信息。如果没有匹配的资料，请明确说明 '未找到匹配资料'。")
-                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
-                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
-                // 开启日志，便于观察效果
-                .advisors(new MyLoggerAdvisor())
-                // 应用知识库问答
-                .advisors(new QuestionAnswerAdvisor(loveAppToAiCupidVectorStore))
-                .call()
-                .chatResponse();
-        String content = chatResponse.getResult().getOutput().getText();
-        log.info("content: {}", content);
-        return content;
-    }
-
-
-    // AI媒婆（本地知识库实现 + 数据库）
-    @Resource
-    private VectorStore loveAppToAiCupidVectorStoreMybatis;
-
-    public String doChatWithRagToAiCupidMybatis(String message, String chatId) {
-        ChatResponse chatResponse = chatClient
-                .prompt()
-                .user(message)
-                .system(SYSTEM_PROMPT + "对话完成后，请以列表形式提供与用户性别相异且匹配的资料，列表中的每个条目应包含姓名、年龄、爱好等基本信息。如果没有匹配的资料，请明确说明 '未找到匹配资料'。")
-                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
-                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
-                // 开启日志，便于观察效果
-                .advisors(new MyLoggerAdvisor())
-                // 应用知识库问答
-                .advisors(new QuestionAnswerAdvisor(loveAppToAiCupidVectorStoreMybatis))
-                .call()
-                .chatResponse();
-        String content = chatResponse.getResult().getOutput().getText();
-        log.info("content: {}", content);
-        return content;
-    }
+//    // AI媒婆（本地知识库实现 + 数据库）
+//    @Resource
+//    private VectorStore loveAppToAiCupidVectorStoreMybatis;
+//
+//    public String doChatWithRagToAiCupidMybatis(String message, String chatId) {
+//        ChatResponse chatResponse = chatClient
+//                .prompt()
+//                .user(message)
+//                .system(SYSTEM_PROMPT + "对话完成后，请以列表形式提供与用户性别相异且匹配的资料，列表中的每个条目应包含姓名、年龄、爱好等基本信息。如果没有匹配的资料，请明确说明 '未找到匹配资料'。")
+//                .advisors(spec -> spec.param(CHAT_MEMORY_CONVERSATION_ID_KEY, chatId)
+//                        .param(CHAT_MEMORY_RETRIEVE_SIZE_KEY, 10))
+//                // 开启日志，便于观察效果
+//                .advisors(new MyLoggerAdvisor())
+//                // 应用知识库问答
+//                .advisors(new QuestionAnswerAdvisor(loveAppToAiCupidVectorStoreMybatis))
+//                .call()
+//                .chatResponse();
+//        String content = chatResponse.getResult().getOutput().getText();
+//        log.info("content: {}", content);
+//        return content;
+//    }
 
 }

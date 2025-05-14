@@ -28,6 +28,7 @@ public class LoveAppVectorStoreConfig {
         simpleVectorStore.add(documents);
         return simpleVectorStore;
     }
+
     @Bean
     VectorStore loveAppToAiCupidVectorStore(EmbeddingModel dashscopeEmbeddingModel) {
         SimpleVectorStore simpleVectorStore = SimpleVectorStore.builder(dashscopeEmbeddingModel)
