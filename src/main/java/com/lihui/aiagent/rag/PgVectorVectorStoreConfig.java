@@ -21,9 +21,15 @@ public class PgVectorVectorStoreConfig {
     @Resource
     private LoveAppDocumentLoader loveAppDocumentLoader;
 
+    @Resource
+    private MyTokenTextSplitter myTokenTextSplitter;
+
+    @Resource
+    private MyKeywordEnricher myKeywordEnricher;
+
     @Bean
     public VectorStore pgVectorVectorStore(@Qualifier("postgresJdbcTemplate") JdbcTemplate jdbcTemplate, EmbeddingModel dashscopeEmbeddingModel) {
-        VectorStore vectorStore = PgVectorStore.builder(jdbcTemplate, dashscopeEmbeddingModel)
+        VectorStore simpleVectorStore  = PgVectorStore.builder(jdbcTemplate, dashscopeEmbeddingModel)
                 .dimensions(1536)                    // Optional: defaults to model dimensions or 1536
                 .distanceType(COSINE_DISTANCE)       // Optional: defaults to COSINE_DISTANCE
                 .indexType(HNSW)                     // Optional: defaults to HNSW
@@ -34,7 +40,15 @@ public class PgVectorVectorStoreConfig {
                 .build();
         // 加载文档
         List<Document> documents = loveAppDocumentLoader.loadMarkdowns();
-        vectorStore.add(documents);
-        return vectorStore;
+
+        //自主切分文档
+//        List<Document> splitCustomized = myTokenTextSplitter.splitCustomized(documents);
+
+        // 自动·补充关键词 元信息
+        List<Document> enrichedDocuments = myKeywordEnricher.enrichDocuments(documents);
+
+
+        simpleVectorStore.add(enrichedDocuments);
+        return simpleVectorStore;
     }
 }
