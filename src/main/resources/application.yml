@@ -3,15 +3,27 @@ spring:
     name: ai-agent
   profiles:
     active: local
+
+  datasource:
+    postgres:
+      driver-class-name: org.postgresql.Driver
+      url: jdbc:postgresql://xxx:5432/xxx
+      username: xxx
+      password: xxx
+    mysql:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://xxx
+      username: xxx
+      password: xxx
 #  datasource:
 #    url: jdbc:mysql://localhost:3306/huiai?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
 #    username: root
 #    password: 123456
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-  datasource:
-    url: jdbc:postgresql://8.155.5.222:5432/agent
-    username: agent
-    password: xxxxxxx
+#  datasource:
+#    url: jdbc:postgresql://xxxxxx:5432/agent
+#    username: agent
+#    password: xxxxxxx
   data:
     redis:
       database: 0
