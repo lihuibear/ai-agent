@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication(exclude = PgVectorStoreAutoConfiguration.class)
 
 
+
 public class AiAgentApplication {
 
     public static void main(String[] args) {
