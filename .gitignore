@@ -37,3 +37,4 @@ src/main/resources/application-local.yml
 src/main/java/com/lihui/aiagent/demo/invok/TestApiKey.java
 tmp
 src/main/java/generator/
+/src/main/resources/.env
