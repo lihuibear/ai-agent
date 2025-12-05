@@ -7,3 +7,4 @@ CREATE TABLE IF NOT EXISTS public.vector_store (
                                                    metadata JSONB,
                                                    embedding vector(1536)
 );
+DROP DATABASE IF EXISTS agent;
